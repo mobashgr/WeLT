@@ -1,3 +1,8 @@
+"""
+@author: mobashgr
+Code adapted from BioBERT-Pytorch to include Weighted Loss Trainer that extends Trainer with a novel weighting scheme (WELT) for weighted cross-entropy function. 
+The code includes different weighting schemes such as INS, ISNS and ENS
+"""
 import logging
 import os
 import sys
