@@ -42,7 +42,7 @@ We have conducted expirements on different BERT models using WELT weighting sche
 
 **Cost-Sensitive Fine-Tuning**
 
-We have adapted [BioBERT-run_ner.py](https://github.com/dmis-lab/biobert-pytorch/blob/master/named-entity-recognition/run_ner.py) to develop in [run_weight_scheme.py](https://github.com/mobashgr/WELT/blob/main/named-entity-recognition/run_weight_scheme.py) that extends `Trainer` class to `WeightedLossTrainer` and override `compute_loss` function to include `INS, ISNS, ENS and WELT` in `weighted Cross-Entropy loss` function.
+We have adapted [BioBERT-run_ner.py](https://github.com/dmis-lab/biobert-pytorch/blob/master/named-entity-recognition/run_ner.py) to develop in [run_weight_scheme.py](https://github.com/mobashgr/WELT/blob/main/named-entity-recognition/run_weight_scheme.py#L94-103) that extends `Trainer` class to `WeightedLossTrainer` and override `compute_loss` function to include `INS, ISNS, ENS and WELT` in `weighted Cross-Entropy loss` function.
 
 **Evaluation** \
 For fair comparison we have used the same NER evaluation approach of [BioBERT](https://github.com/dmis-lab/biobert)
