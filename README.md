@@ -85,5 +85,7 @@ python run_weight_scheme.py \
   -Hyperparameters \
   -Table of WELT Models \
   -Results tables 
-  ## Citation
+ ## Citation
   (TBD)
+## Acknowledgment
+Ghadeer Mobasher is part of the PoLiMeR-ITN (http://polimer-itn.eu/) and is supported by European Union’s Horizon 2020 research and innovation program under the Marie Skłodowska-Curie grant agreement PoLiMeR, No 81261
