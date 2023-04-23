@@ -84,7 +84,7 @@ python run_weight_scheme.py \
     --overwrite_output_dir
   ```
 ## Quick Links  
-  -[Usage of WELT](https://github.com/mobashgr/WELT/blob/main/named-entity-recognition/README.md#welt-usage-example) \
+  -[Usage of WeLT](https://github.com/mobashgr/WELT/blob/main/named-entity-recognition/README.md#welt-usage-example) \
   -[Hyperparameters](https://github.com/mobashgr/WELT/blob/main/named-entity-recognition/README.md#hyper-parameters) 
 
  ## Citation
