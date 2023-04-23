@@ -33,7 +33,7 @@ python run_weight_scheme.py \
   ```
 ## Hyper-parameters
 |Model                                            |Max_seq_length|BatchSize|Num_train_epochs|
-|---	|---	|---| |---|
+|---	|---	|  ---	| ---	|
 | BioBERT                                       | 384 | 5  | 20  |
 | BlueBERT                                     | 128 | 32 | 30  |
 | PubMedBERT                                    | 512 | 5  | 30  |
@@ -41,8 +41,8 @@ python run_weight_scheme.py \
 | BioELECTRA                                   | 512 | 5  | 100 |
 
 
-|Name | Formula |
-|---	|---	|
+|Model | MaxSeqLength | BatchSize |  NumTrainEpochs |
+|---	|---	|  ---	| ---	|
 |Inverse of Number of Samples (INS)|$weight[class]= \textstyle \dfrac{1}{n_c}$|
 |Inverse of Square Root of Number of Samples (ISNS)| $weight[class]= \textstyle \dfrac{1}{\sqrt {n_c}}$|
 |Effective Number of Samples (ENS)| $weight[class]= \textstyle \dfrac{1-\beta}{1-\beta ^ {n_c}}$|
