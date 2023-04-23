@@ -39,3 +39,11 @@ python run_weight_scheme.py \
 | PubMedBERT  |                                    | 512 | 5  | 30  |
 | SciBERT|                                         | 384 | 5  | 20  |
 | BioELECTRA       |                               | 512 | 5  | 100 |
+
+
+|Name | Formula |
+|---	|---	|
+|Inverse of Number of Samples (INS)|$weight[class]= \textstyle \dfrac{1}{n_c}$|
+|Inverse of Square Root of Number of Samples (ISNS)| $weight[class]= \textstyle \dfrac{1}{\sqrt {n_c}}$|
+|Effective Number of Samples (ENS)| $weight[class]= \textstyle \dfrac{1-\beta}{1-\beta ^ {n_c}}$|
+|Weighted Loss Trainer (WELT)| $CW_c= \textstyle 1- \dfrac{ClassDistibution_c}{TotalOfClassesDistributions_t}$|
