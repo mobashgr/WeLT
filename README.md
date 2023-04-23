@@ -33,6 +33,7 @@ We have conducted expirements on different BERT models using WELT weighting sche
 |BlueBERT| [model_name_or_path](https://huggingface.co/bionlp/bluebert_pubmed_uncased_L-12_H-768_A-12)|
 |PubMedBERT| [model_name_or_path](https://huggingface.co/microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract)|
 |SciBERT| [model_name_or_path](https://huggingface.co/allenai/scibert_scivocab_uncased)|
+|BioELECTRA| [model_name_or_path](https://huggingface.co/kamalkraj/bioelectra-base-discriminator-pubmed)|
 
 **Weighting Schemes** 
 |Name | Formula |
