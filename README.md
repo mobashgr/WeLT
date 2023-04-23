@@ -36,12 +36,12 @@ We have conducted expirements on different BERT models using WELT weighting sche
 |BioELECTRA| [model_name_or_path](https://huggingface.co/kamalkraj/bioelectra-base-discriminator-pubmed)|
 
 **Weighting Schemes** 
-|Name | Formula |
-|---	|---	|
-|Inverse of Number of Samples (INS)|$weight[class]= \textstyle \dfrac{1}{n_c}$|
-|Inverse of Square Root of Number of Samples (ISNS)| $weight[class]= \textstyle \dfrac{1}{\sqrt {n_c}}$|
-|Effective Number of Samples (ENS)| $weight[class]= \textstyle \dfrac{1-\beta}{1-\beta ^ {n_c}}$|
-|Weighted Loss Trainer (WELT)| $CW_c= \textstyle 1- \dfrac{ClassDistibution_c}{TotalOfClassesDistributions_t}$|
+|Name 
+|---	|
+|Inverse of Number of Samples (INS)|
+|Inverse of Square Root of Number of Samples (ISNS)|
+|Effective Number of Samples (ENS)|
+|Weighted Loss Trainer (WELT) (Ours)|
 
 **Cost-Sensitive Fine-Tuning**
 
