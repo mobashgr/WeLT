@@ -31,3 +31,10 @@ python run_weight_scheme.py \
     --do_predict \
     --overwrite_output_dir
   ```
+## Hyper-parameters
+|Model                                            |Max_seq_length|BatchSize|Num_train_epochs|
+| BioBERT                                         | 384 | 5  | 20  |
+| BlueBERT                                        | 128 | 32 | 30  |
+| PubMedBERT                                      | 512 | 5  | 30  |
+| SciBERT                                         | 384 | 5  | 20  |
+| BioELECTRA                                      | 512 | 5  | 100 |
