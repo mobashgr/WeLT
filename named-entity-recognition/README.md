@@ -32,6 +32,7 @@ python run_weight_scheme.py \
     --overwrite_output_dir
   ```
 ## Hyper-parameters
+**BioRED-Chem**
 |Model                                            |Max_seq_length|BatchSize|Num_train_epochs|
 |---	|---	|  ---	| ---	|
 | BioBERT                                       | 384 | 5  | 20  |
@@ -40,10 +41,65 @@ python run_weight_scheme.py \
 | SciBERT                                        | 384 | 5  | 20  |
 | BioELECTRA                                   | 512 | 5  | 100 |
 
-
-|Model | MaxSeqLength | BatchSize |  NumTrainEpochs |
+**BioRED-Disease**
+|Model                                            |Max_seq_length|BatchSize|Num_train_epochs|
 |---	|---	|  ---	| ---	|
-|Inverse of Number of Samples (INS)|$weight[class]= \textstyle \dfrac{1}{n_c}$|
-|Inverse of Square Root of Number of Samples (ISNS)| $weight[class]= \textstyle \dfrac{1}{\sqrt {n_c}}$|
-|Effective Number of Samples (ENS)| $weight[class]= \textstyle \dfrac{1-\beta}{1-\beta ^ {n_c}}$|
-|Weighted Loss Trainer (WELT)| $CW_c= \textstyle 1- \dfrac{ClassDistibution_c}{TotalOfClassesDistributions_t}$|
+| BioBERT                                         | 384 | 5  | 20 |
+| BlueBERT                                        | 128 | 32 | 30 |
+| PubMedBERT                                      | 320 | 8  | 10 |
+| SciBERT                                         | 512 | 5  | 30 |
+| BioELECTRA                                      | 256 | 16 | 13 |
+
+**BC5CDR-Chem**
+|Model                                            |Max_seq_length|BatchSize|Num_train_epochs|
+|---	|---	|  ---	| ---	|
+| BioBERT                                                       | 320 | 8  | 10 |
+| BlueBERT                                                      | 256 | 16 | 13 |
+| PubMedBERT                                                    | 512 | 5  | 75 |
+| SciBERT                                                       | 320 | 8  | 30 |
+| BioELECTRA                                                    | 384 | 12 | 20 |
+
+**BC5CDR-Disease**
+|Model                                            |Max_seq_length|BatchSize|Num_train_epochs|
+|---	|---	|  ---	| ---	|
+| BioBERT                                                       | 512 | 5  | 30 |
+| BlueBERT                                                      | 256 | 16 | 13 |
+| PubMedBERT                                                    | 512 | 5  | 30 |
+| SciBERT                                                       | 256 | 16 | 13 |
+| BioELECTRA                                                    | 256 | 16 | 13 |
+
+**BC4CHEM**
+|Model                                            |Max_seq_length|BatchSize|Num_train_epochs|
+|---	|---	|  ---	| ---	|
+| BioBERT                                                       | 128 | 32 | 30 |
+| BlueBERT                                                      | 320 | 8  | 80 |
+| PubMedBERT                                                    | 384 | 5  | 20 |
+| SciBERT                                                       | 320 | 8  | 30 |
+| BioELECTRA                                                    | 128 | 32 | 30 |
+
+**Linnaeus**
+|Model                                            |Max_seq_length|BatchSize|Num_train_epochs|
+|---	|---	|  ---	| ---	|
+| BioBERT                                                       | 320 | 8  | 10 |
+| BlueBERT                                                      | 256 | 16 | 20 |
+| PubMedBERT                                                    | 320 | 8  | 20 |
+| SciBERT                                                       | 256 | 16 | 13 |
+| BioELECTRA                                                    | 384 | 12 | 10 |
+
+**BC2GM**
+|Model                                            |Max_seq_length|BatchSize|Num_train_epochs|
+|---	|---	|  ---	| ---	|
+| BioBERT                                                       | 128 | 32 | 30 |
+| BlueBERT                                                      | 256 | 16 | 40 |
+| PubMedBERT                                                    | 256 | 16 | 30 |
+| SciBERT                                                       | 128 | 32 | 30 |
+| BioELECTRA                                                    | 384 | 12 | 10 |
+
+**NCBI**
+|Model                                            |Max_seq_length|BatchSize|Num_train_epochs|
+|---	|---	|  ---	| ---	|
+| BioBERT                                                       | 384 | 5  | 20 |
+| BlueBERT                                                      | 256 | 16 | 13 |
+| PubMedBERT                                                    | 384 | 5  | 20 |
+| SciBERT                                                       | 256 | 16 | 13 |
+| BioELECTRA                                                    | 256 | 16 | 5  |
