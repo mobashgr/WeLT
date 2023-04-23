@@ -85,9 +85,8 @@ python run_weight_scheme.py \
   ```
 ## Quick Links  
   -[Usage of WELT](https://github.com/mobashgr/WELT/blob/main/named-entity-recognition/README.md#welt-usage-example) \
-  -Hyperparameters \
-  -Table of WELT Models \
-  -Results tables 
+  -[Hyperparameters](https://github.com/mobashgr/WELT/blob/main/named-entity-recognition/README.md#hyper-parameters) \
+
  ## Citation
   (TBD)
 ## Acknowledgment
