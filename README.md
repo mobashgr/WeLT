@@ -92,4 +92,4 @@ python run_weight_scheme.py \
  ## Citation
   (TBD)
 ## Acknowledgment
-Ghadeer Mobasher is part of the [PoLiMeR-ITN](http://polimer-itn.eu/) and is supported by European Union’s Horizon 2020 research and innovation program under the Marie Skłodowska-Curie grant agreement PoLiMeR, No 81261
+Ghadeer Mobasher is part of the [PoLiMeR-ITN](http://polimer-itn.eu/) and is supported by European Union’s Horizon 2020 research and innovation program under the Marie Skłodowska-Curie grant agreement PoLiMeR, No 812616.
