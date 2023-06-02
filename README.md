@@ -1,4 +1,4 @@
-# WeLT: Weighted Loss Trainer for handling the Class Imbalance
+# WeLT: Improving Biomedical Fine-tuned Pre-trained Language Models with Cost-sensitive Learning
 Authors: Ghadeer Mobasher*, Olga Krebs, Wolfgang Müller, and Michael Gertz 
 
 [For transperancy, all the :hugs: models are publicaly avaliable as a result of our expiremental work on HuggingFaceHub](https://huggingface.co/mobashgr)
@@ -86,8 +86,8 @@ python run_weight_scheme.py \
     --overwrite_output_dir
   ```
 ## Quick Links  
-  -[Usage of WeLT] (https://github.com/mobashgr/WeLT/tree/main/named-entity-recognition#welt-usage-example)\
-  -[Hyperparameters] (https://github.com/mobashgr/WeLT/tree/main/named-entity-recognition#welt-usage-example)
+  -[Usage of WeLT](https://github.com/mobashgr/WeLT/tree/main/named-entity-recognition#welt-usage-example)\
+  -[Hyperparameters](https://github.com/mobashgr/WeLT/tree/main/named-entity-recognition#welt-usage-example)
 
  ## Citation
   (TBD)
