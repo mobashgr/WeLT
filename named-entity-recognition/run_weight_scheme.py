@@ -1,6 +1,6 @@
 """
 @author: Ghadeer Mobasher
-Code adapted from BioBERT-Pytorch to include Weighted Loss Trainer that extends Trainer with a novel weighting scheme (WELT) for weighted cross-entropy function. 
+Code adapted from BioBERT-Pytorch to include Weighted Loss Trainer that extends Trainer with a novel weighting scheme (WeLT) for weighted cross-entropy function. 
 The code includes different weighting schemes such as INS, ISNS and ENS
 """
 import logging
@@ -81,8 +81,8 @@ class DataTrainingArguments:
         default=False, metadata={"help": "Overwrite the cached training and evaluation sets"}
     )
     weight_scheme: str = field(
-        default="WELT",
-        metadata={"help": "There are different weighting schemes as follows WELT,ISNS,INS,ENS."}
+        default="WeLT",
+        metadata={"help": "There are different weighting schemes as follows WeLT,ISNS,INS,ENS."}
     )
     beta_factor: float = field(
         default=0.0,
