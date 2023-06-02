@@ -1,5 +1,5 @@
 """
-@author: 
+@author: Ghadeer Mobasher
 Code adapted from BioBERT-Pytorch to include Weighted Loss Trainer that extends Trainer with a novel weighting scheme (WELT) for weighted cross-entropy function. 
 The code includes different weighting schemes such as INS, ISNS and ENS
 """
@@ -74,33 +74,32 @@ class DataTrainingArguments:
         default=128,
         metadata={
             "help": "The maximum total input sequence length after tokenization. Sequences longer "
-            "than this will be truncated, sequences shorter will be padded."
+                    "than this will be truncated, sequences shorter will be padded."
         },
     )
     overwrite_cache: bool = field(
         default=False, metadata={"help": "Overwrite the cached training and evaluation sets"}
     )
-    weight_scheme:str=field(
+    weight_scheme: str = field(
         default="WELT",
         metadata={"help": "There are different weighting schemes as follows WELT,ISNS,INS,ENS."}
-        )
-    beta_factor:float=field(
-         default=0.0,
-         metadata={"help": "In case it is ENS, enter required beta value."}
-        )
-        
+    )
+    beta_factor: float = field(
+        default=0.0,
+        metadata={"help": "In case it is ENS, enter required beta value."}
+    )
 
 
 class WeightedLossTrainer(Trainer):
-   
-   def compute_loss(self, model, inputs,return_outputs=False):
-         labels = inputs.get("labels")
+
+    def compute_loss(self, model, inputs, return_outputs=False):
+        labels = inputs.get("labels")
         # forward pass
-         outputs = model(**inputs)
-         logits = outputs.get("logits") 
-         loss_fct = nn.CrossEntropyLoss(weight=outputt)
-         loss = loss_fct(logits.view(-1, self.model.config.num_labels), labels.view(-1))
-         return (loss, outputs) if return_outputs else loss
+        outputs = model(**inputs)
+        logits = outputs.get("logits")
+        loss_fct = nn.CrossEntropyLoss(weight=rescaledweights)
+        loss = loss_fct(logits.view(-1, self.model.config.num_labels), labels.view(-1))
+        return (loss, outputs) if return_outputs else loss
 
 
 def main():
@@ -116,56 +115,57 @@ def main():
     else:
         model_args, data_args, training_args = parser.parse_args_into_dataclasses()
     if (
-        os.path.exists(training_args.output_dir)
-        and os.listdir(training_args.output_dir)
-        and training_args.do_train
-        and not training_args.overwrite_output_dir
+            os.path.exists(training_args.output_dir)
+            and os.listdir(training_args.output_dir)
+            and training_args.do_train
+            and not training_args.overwrite_output_dir
     ):
         raise ValueError(
             f"Output directory ({training_args.output_dir}) already exists and is not empty. Use --overwrite_output_dir to overcome."
         )
-     
-    print(data_args.weight_scheme) 
-    dataset_df = pd.read_csv(sys.argv[2]+'train.tsv',sep='\t',engine='python',quoting=csv.QUOTE_NONE,encoding='UTF-8',header=None, names=['token', 'tag'])
-    sum_0=dataset_df.tag.value_counts().O
-    sum_1= dataset_df.tag.value_counts().B
-    sum_2= dataset_df.tag.value_counts().I
-    TotalTags=sum_0+sum_1+sum_2
+
+    print(data_args.weight_scheme)
+    dataset_df = pd.read_csv(sys.argv[2] + 'train.tsv', sep='\t', engine='python', quoting=csv.QUOTE_NONE,
+                             encoding='UTF-8', header=None, names=['token', 'tag'])
+    sum_O = dataset_df.tag.value_counts().O
+    sum_B = dataset_df.tag.value_counts().B
+    sum_I = dataset_df.tag.value_counts().I
+    TotalTags = sum_O + sum_B + sum_I
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    global outputt
-    if(data_args.weight_scheme=="INS"):
-            New_weight_sum0=(1/sum_0)
-            New_weight_sum1=(1/sum_1)
-            New_weight_sum2=(1/sum_2)
-            NewWeights=np.array([New_weight_sum0,New_weight_sum1,New_weight_sum2])
-            TorchWeights=torch.from_numpy(NewWeights).float().to('cuda')
-            outputt=TorchWeights    
-           
-    elif(data_args.weight_scheme=="ISNS"):
-             New_weight_sum0=(1/math.sqrt(sum_0))
-             New_weight_sum1=(1/math.sqrt(sum_1))
-             New_weight_sum2=(1/math.sqrt(sum_2))
-             NewWeights=np.array([New_weight_sum0,New_weight_sum1,New_weight_sum2])
-             TorchWeights=torch.from_numpy(NewWeights).float().to('cuda')
-             outputt=TorchWeights    
-             
-    elif(data_args.weight_scheme=="ENS"):
-             New_weight_sum0=(1-data_args.beta_factor/(1-np.power(data_args.beta_factor,sum_0)))
-             New_weight_sum1=(1-data_args.beta_factor/(1-np.power(data_args.beta_factor,sum_1)))
-             New_weight_sum2=(1-data_args.beta_factor/(1-np.power(data_args.beta_factor,sum_2)))
-             NewWeights=np.array([New_weight_sum0,New_weight_sum1,New_weight_sum2])
-             TorchWeights=torch.from_numpy(NewWeights).float().to('cuda')
-             outputt=TorchWeights    
-        
+    global rescaledweights
+    if (data_args.weight_scheme == "INS"):
+        new_weight_O = (1 / sum_O)
+        new_weight_B = (1 / sum_B)
+        new_weight_I = (1 / sum_I)
+        newWeights = np.array([new_weight_O, new_weight_B, new_weight_I])
+        torchweights = torch.from_numpy(newWeights).float().to('cuda')
+        rescaledweights = torchweights
+
+    elif (data_args.weight_scheme == "ISNS"):
+        new_weight_O = (1 / math.sqrt(sum_O))
+        new_weight_B = (1 / math.sqrt(sum_B))
+        new_weight_I = (1 / math.sqrt(sum_I))
+        newWeights = np.array([new_weight_O, new_weight_B, new_weight_I])
+        torchweights = torch.from_numpy(newWeights).float().to('cuda')
+        rescaledweights = torchweights
+
+    elif (data_args.weight_scheme == "ENS"):
+        new_weight_O = (1 - data_args.beta_factor / (1 - np.power(data_args.beta_factor, sum_O)))
+        new_weight_B = (1 - data_args.beta_factor / (1 - np.power(data_args.beta_factor, sum_B)))
+        new_weight_I = (1 - data_args.beta_factor / (1 - np.power(data_args.beta_factor, sum_I)))
+        newWeights = np.array([new_weight_O, new_weight_B, new_weight_I])
+        torchweights = torch.from_numpy(newWeights).float().to('cuda')
+        rescaledweights = torchweights
+
     else:
-             New_weight_sum0=(1-sum_0 /TotalTags)
-             New_weight_sum1=(1-sum_1/TotalTags)
-             New_weight_sum2=(1-sum_2/TotalTags)
-             NewWeights=np.array([New_weight_sum0,New_weight_sum1,New_weight_sum2])
-             TorchWeights=torch.from_numpy(NewWeights).float().to('cuda')
-             outputt=TorchWeights
-             outputt=torch.softmax(TorchWeights, dim=0)
-    print(outputt) 
+        new_weight_O = (1 - sum_O / TotalTags)
+        new_weight_B = (1 - sum_B / TotalTags)
+        new_weight_I = (1 - sum_I / TotalTags)
+        newWeights = np.array([new_weight_O, new_weight_B, new_weight_I])
+        torchweights = torch.from_numpy(newWeights).float().to('cuda')
+        rescaledweights = torchweights
+        rescaledweights = torch.softmax(torchweights, dim=0)
+    print(rescaledweights)
     # Setup logging
     logging.basicConfig(
         format="%(asctime)s - %(levelname)s - %(name)s -   %(message)s",
@@ -181,7 +181,7 @@ def main():
         training_args.fp16,
     )
     logger.info("Training/evaluation parameters %s", training_args)
-   # Set seed
+    # Set seed
     set_seed(training_args.seed)
 
     # Prepare CONLL-2003 task
@@ -213,7 +213,7 @@ def main():
         config=config,
         cache_dir=model_args.cache_dir,
     )
-  
+
     model_to_save = AutoModel.from_pretrained(
         model_args.model_name_or_path,
         from_tf=bool(".ckpt" in model_args.model_name_or_path),
@@ -222,12 +222,11 @@ def main():
     )
     model_to_save.save_pretrained(training_args.output_dir)
     tokenizer.save_pretrained(training_args.output_dir)
-   
 
     # Get datasets
     train_dataset = (
         NerDataset(
-   data_dir=data_args.data_dir,
+            data_dir=data_args.data_dir,
             tokenizer=tokenizer,
             labels=labels,
             model_type=config.model_type,
@@ -273,7 +272,7 @@ def main():
 
         return {
             "precision": precision_score(out_label_list, preds_list),
-           "recall": recall_score(out_label_list, preds_list),
+            "recall": recall_score(out_label_list, preds_list),
             "f1": f1_score(out_label_list, preds_list),
         }
 
@@ -315,7 +314,6 @@ def main():
 
             results.update(result)
 
-
     # Predict
     if training_args.do_predict:
         test_dataset = NerDataset(
@@ -338,7 +336,6 @@ def main():
                 for key, value in metrics.items():
                     logger.info("  %s = %s", key, value)
                     writer.write("%s = %s\n" % (key, value))
-
 
         output_test_predictions_file = os.path.join(training_args.output_dir, "test_predictions.txt")
         if trainer.is_world_process_zero():
@@ -363,10 +360,8 @@ def main():
                                 "Maximum sequence length exceeded: No prediction for '%s'.", line.split()[0]
                             )
 
-
     return results
 
-     
 
 def _mp_fn(index):
     # For xla_spawn (TPUs)
