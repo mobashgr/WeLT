@@ -1,7 +1,7 @@
 # WeLT: Weighted Loss Trainer for handling the Class Imbalance
 Biomedical pre-trained language models (BioPLMs) have been achieving state-of-the-art results for various biomedical text mining tasks. However, prevailing fine-tuning approaches naively train BioPLMs on targeted datasets without considering the class distributions. This is problematic, especially with dealing with imbalanced biomedical gold-standard datasets for named entity recognition (NER). Regardless of the high-performing SOTA fine-tuned NER models, they are biased towards other (O) tags and misclassify biomedical entities. To fill the gap, we propose WELT, a cost-sensitive BERT that handles the class imbalance for the task of biomedical NER. We investigate the impact of WELT against the traditional fine-tuning approaches on mixed-domain and domain-specific BioPLMs. We evaluated WELT againest other weighting schemes such as Inverse of Number of Samples (INS), Inverse of Square Root of Number of Samples (ISNS) and Effective Number of Samples (ENS). Our results show the outperformance of WELT on 4 different types of Biomedical BERT models and BioELECTRA using 8 gold-standard datasets.
 
-[For transperancy, all the :hugs: models are publicaly avaliable as a result of our expiremental work on HuggingFaceHub]
+[For transperancy, all the :hugs: models are publicaly avaliable as a result of our expiremental work on HuggingFaceHub](https://huggingface.co/mobashgr)
 
 ## Installation 
 **Dependencies**
@@ -45,7 +45,7 @@ We have conducted expirements on different BERT models using WELT weighting sche
 
 **Cost-Sensitive Fine-Tuning**
 
-We have adapted [BioBERT-run_ner.py] to develop in [run_weight_scheme.py] that extends `Trainer` class to `WeightedLossTrainer` and override `compute_loss` function to include [`INS, ISNS, ENS and WELT`] in [`weighted Cross-Entropy loss` function].
+We have adapted [BioBERT-run_ner.py]() to develop in [run_weight_scheme.py] () that extends `Trainer` class to `WeightedLossTrainer` and override `compute_loss` function to include [`INS, ISNS, ENS and WELT`] in [`weighted Cross-Entropy loss` function].
 
 **Evaluation** \
 For fair comparison we have used the same NER evaluation approach of [BioBERT](https://github.com/dmis-lab/biobert)
