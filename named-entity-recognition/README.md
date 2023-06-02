@@ -1,6 +1,6 @@
 ## WELT usage example
 
-This is an example for fine-tuning `BioRED-Chem` over `SciBERT` using `WELT` weight scheme 
+This is an example for fine-tuning `BioRED-Chem` over `SciBERT` using `WeLT` weight scheme 
 ```bash
 cd named-entity-recognition
 ./preprocess.sh
