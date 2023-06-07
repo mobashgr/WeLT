@@ -90,6 +90,6 @@ python run_weight_scheme.py \
   -[Hyperparameters](https://github.com/mobashgr/WeLT/tree/main/named-entity-recognition#welt-usage-example)
 
  ## Citation
-  (TBD)
+  (TBD, it will be updated after BioNLP-2023)
 ## Acknowledgment
 Ghadeer Mobasher* is part of the [PoLiMeR-ITN](http://polimer-itn.eu/) and is supported by European Union’s Horizon 2020 research and innovation program under the Marie Skłodowska-Curie grant agreement PoLiMeR, No 812616.
