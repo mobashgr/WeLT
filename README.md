@@ -90,6 +90,20 @@ python run_weight_scheme.py \
   -[Hyperparameters](https://github.com/mobashgr/WeLT/tree/main/named-entity-recognition#welt-usage-example)
 
  ## Citation
-  (TBD, it will be updated after BioNLP-2023)
+ @inproceedings{mobasher-etal-2023-welt,
+    title = "{W}e{LT}: Improving Biomedical Fine-tuned Pre-trained Language Models with Cost-sensitive Learning",
+    author = {Mobasher, Ghadeer  and
+      M{\"u}ller, Wolfgang  and
+      Krebs, Olga  and
+      Gertz, Michael},
+    booktitle = "The 22nd Workshop on Biomedical Natural Language Processing and BioNLP Shared Tasks",
+    month = jul,
+    year = "2023",
+    address = "Toronto, Canada",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2023.bionlp-1.40",
+    pages = "427--438"
+}
+
 ## Acknowledgment
 Ghadeer Mobasher* is part of the [PoLiMeR-ITN](http://polimer-itn.eu/) and is supported by European Union’s Horizon 2020 research and innovation program under the Marie Skłodowska-Curie grant agreement PoLiMeR, No 812616.
