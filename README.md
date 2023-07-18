@@ -90,7 +90,7 @@ python run_weight_scheme.py \
   -[Hyperparameters](https://github.com/mobashgr/WeLT/tree/main/named-entity-recognition#welt-usage-example)
 
  ## Citation
- ```bash
+ ```bibtex
  @inproceedings{mobasher-etal-2023-welt,
     title = "{W}e{LT}: Improving Biomedical Fine-tuned Pre-trained Language Models with Cost-sensitive Learning",
     author = {Mobasher, Ghadeer  and
