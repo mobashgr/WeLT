@@ -1,5 +1,5 @@
 #!/bin/bash
-ENTITIES="BioRED-CD BioRED-Dis BioRED-Chem NCBI-disease BC5CDR-disease BC5CDR-chem BC4CHEMD JNLPBA BC2GM linnaeus s800"
+ENTITIES="BioRED-Dis BioRED-Chem NCBI-disease BC5CDR-disease BC5CDR-chem BC4CHEMD JNLPBA BC2GM linnaeus s800"
 MAX_LENGTH=128
 
 for ENTITY in $ENTITIES
