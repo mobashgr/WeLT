@@ -72,7 +72,7 @@ python run_weight_scheme.py \
     --data_dir ${DATA_DIR}/${ENTITY}/ \
     --labels ${DATA_DIR}/${ENTITY}/labels.txt \
     --model_name_or_path allenai/scibert_scivocab_uncased \
-   --output_dir ${ENTITY}-WLT-${MAX_LENGTH}-SciBERT-ENS-4 \
+   --output_dir ${ENTITY}-${MAX_LENGTH}-SciBERT-ENS-0.3\
     --max_seq_length ${MAX_LENGTH} \
     --num_train_epochs ${NUM_EPOCHS} \
     --weight_scheme ENS \
