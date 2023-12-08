@@ -1,6 +1,6 @@
 ## WELT usage example
 
-This is an example for fine-tuning `BioRED-Chem` over `SciBERT` using `WeLT` weight scheme 
+This is an example of fine-tuning `BioRED-Chem` over `SciBERT` using the `WeLT` weight scheme 
 ```bash
 cd named-entity-recognition
 ./preprocess.sh
@@ -19,7 +19,7 @@ python run_weight_scheme.py \
     --data_dir ${DATA_DIR}/${ENTITY}/ \
     --labels ${DATA_DIR}/${ENTITY}/labels.txt \
     --model_name_or_path allenai/scibert_scivocab_uncased \
-   --output_dir ${ENTITY}-WLT-${MAX_LENGTH}-SciBERT-ENS-4 \
+   --output_dir ${ENTITY}-WeLT-${MAX_LENGTH}-SciBERT \
     --max_seq_length ${MAX_LENGTH} \
     --num_train_epochs ${NUM_EPOCHS} \
     --weight_scheme WELT \
