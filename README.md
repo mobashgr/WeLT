@@ -1,9 +1,9 @@
 # WeLT: Improving Biomedical Fine-tuned Pre-trained Language Models with Cost-sensitive Learning
 Authors: Ghadeer Mobasher*, Olga Krebs, Wolfgang Müller, and Michael Gertz 
 
-[For transperancy, all the :hugs: models are publicaly avaliable as a result of our expiremental work on HuggingFaceHub](https://huggingface.co/mobashgr)
+[For transparency, all the :hugs: models are publicly available as a result of our experimental work on HuggingFaceHub](https://huggingface.co/mobashgr)
 
-Biomedical pre-trained language models (BioPLMs) have been achieving state-of-the-art results for various biomedical text mining tasks. However, prevailing fine-tuning approaches naively train BioPLMs on targeted datasets without considering the class distributions. This is problematic, especially with dealing with imbalanced biomedical gold-standard datasets for named entity recognition (NER). Regardless of the high-performing SOTA fine-tuned NER models, they are biased towards other (O) tags and misclassify biomedical entities. To fill the gap, we propose WELT, a cost-sensitive BERT that handles the class imbalance for the task of biomedical NER. We investigate the impact of WELT against the traditional fine-tuning approaches on mixed-domain and domain-specific BioPLMs. We evaluated WELT againest other weighting schemes such as Inverse of Number of Samples (INS), Inverse of Square Root of Number of Samples (ISNS) and Effective Number of Samples (ENS). Our results show the outperformance of WELT on 4 different types of Biomedical BERT models and BioELECTRA using 8 gold-standard datasets.
+Biomedical pre-trained language models (BioPLMs) have been achieving state-of-the-art results for various biomedical text-mining tasks. However, prevailing fine-tuning approaches naively train BioPLMs on targeted datasets without considering the class distributions. This is problematic, especially with dealing with imbalanced biomedical gold-standard datasets for named entity recognition (NER). Regardless of the high-performing SOTA fine-tuned NER models, they are biased towards other (O) tags and misclassify biomedical entities. To fill the gap, we propose WELT, a cost-sensitive BERT that handles the class imbalance for the task of biomedical NER. We investigate the impact of WELT against the traditional fine-tuning approaches on mixed-domain and domain-specific BioPLMs. We evaluated WELT against other weighting schemes such as Inverse of Number of Samples (INS), Inverse of Square Root of Number of Samples (ISNS) and Effective Number of Samples (ENS). Our results show the outperformance of WELT on 4 different types of Biomedical BERT models and BioELECTRA using 8 gold-standard datasets.
 
 ## Installation 
 **Dependencies**
@@ -11,13 +11,13 @@ Biomedical pre-trained language models (BioPLMs) have been achieving state-of-th
 -	Pytorch (>=1.2.0) 
 1.	Clone this GitHub repository: `git clone https://github.com/mobashgr/WELT.git`
 2.	Navigate to the WELT folder and install all necessary dependencies: `python3 -m pip install -r requirements.txt` \
-Note: To install appropriate torch, follow the [download instructions](https://pytorch.org/) based on your development environment.
+Note: To install the appropriate torch, follow the [download instructions](https://pytorch.org/) based on your development environment.
 ## Data Preparation
 **NER Datasets**
 | Dataset 	| Source 	|
 |---	|---	|
-| <ul><li>NCBI-disease</li> <li>BC5CDR-disease</li>  <li>BC5CDR-chem</li>  <li>BC4CHEMD</li> <li>BC2GM</li> <li>Linnaeus</li></ul> 	| NER datasets are directly reterived from [BioBERT](https://github.com/dmis-lab/biobert) via this [link](https://drive.google.com/file/d/1cGqvAm9IZ_86C4Mj7Zf-w9CFilYVDl8j/view) 	|
-| <ul><li>BioRED-Dis</li>  <li>BioRED-Chem</li></ul> 	| We have extended the aforementioned NER datastes to include [BioRED](https://ftp.ncbi.nlm.nih.gov/pub/lu/BioRED/). To convert from  `BioC XML / JSON` to `conll`, we used [bconv](https://github.com/lfurrer/bconv) and filtered the chemical and disease entities. 	|
+| <ul><li>NCBI-disease</li> <li>BC5CDR-disease</li>  <li>BC5CDR-chem</li>  <li>BC4CHEMD</li> <li>BC2GM</li> <li>Linnaeus</li></ul> 	| NER datasets are directly retrieved from [BioBERT](https://github.com/dmis-lab/biobert) via this [link](https://drive.google.com/file/d/1cGqvAm9IZ_86C4Mj7Zf-w9CFilYVDl8j/view) 	|
+| <ul><li>BioRED-Dis</li>  <li>BioRED-Chem</li></ul> 	| We have extended the aforementioned NER datasets to include [BioRED](https://ftp.ncbi.nlm.nih.gov/pub/lu/BioRED/). To convert from  `BioC XML / JSON` to `conll`, we used [bconv](https://github.com/lfurrer/bconv) and filtered the chemical and disease entities. 	|
 
 **Data Download** \
 To directly download NER datasets, use `download.sh` or manually download them via this [link](https://drive.google.com/file/d/1nHH3UYpQImQhBTei5HiTcAAFBvsfaBw0/view) in `WELT` directory, `unzip datasets.zip` and `rm -r datasets.zip`
@@ -26,7 +26,7 @@ To directly download NER datasets, use `download.sh` or manually download them v
 We adapted the `preprocessing.sh` from [BioBERT](https://github.com/dmis-lab/biobert) to include [BioRED](https://ftp.ncbi.nlm.nih.gov/pub/lu/BioRED/)
 
 ## Fine-tuning with handling the class imbalance
-We have conducted expirements on different BERT models using WELT weighting scheme. We have compared WELT againest other existing weighting schemes and the corresponding traditional fine-tuning approaches(i.e normal BioBERT fine-tuning)
+We have conducted experiments on different BERT models using WeLT weighting scheme. We have compared WELT against other existing weighting schemes and the corresponding traditional fine-tuning approaches(i.e normal BioBERT fine-tuning)
 
 **Fine-tuning BERT Models**
 | Model 	| Used version in HF :hugs: |
@@ -53,7 +53,7 @@ We have adapted [BioBERT-run_ner.py](https://github.com/dmis-lab/biobert-pytorch
 For fair comparison we have used the same NER evaluation approach of [BioBERT](https://github.com/dmis-lab/biobert)
 
 **Usage Example** \
-This is an example for fine-tuning `BioRED-Chem` over `SciBERT` using `ENS` weight scheme with $\beta$ of 0.3
+This is an example of fine-tuning `BioRED-Chem` over `SciBERT` using an `ENS` weight scheme with $\beta$ of 0.3
 ```bash
 cd named-entity-recognition
 ./preprocess.sh
@@ -107,4 +107,4 @@ python run_weight_scheme.py \
 }
 ```
 ## Acknowledgment
-Ghadeer Mobasher* is part of the [PoLiMeR-ITN](http://polimer-itn.eu/) and is supported by European Union’s Horizon 2020 research and innovation program under the Marie Skłodowska-Curie grant agreement PoLiMeR, No 812616.
+Ghadeer Mobasher* is part of the [PoLiMeR-ITN](http://polimer-itn.eu/) and is supported by the European Union’s Horizon 2020 research and innovation program under the Marie Skłodowska-Curie grant agreement PoLiMeR, No 812616.
