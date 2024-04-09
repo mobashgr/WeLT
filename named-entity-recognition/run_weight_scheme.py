@@ -137,7 +137,7 @@ def main():
         new_weight_O = (1 / sum_O)
         new_weight_B = (1 / sum_B)
         new_weight_I = (1 / sum_I)
-        newWeights = np.array([new_weight_O, new_weight_B, new_weight_I])
+        newWeights = np.array([new_weight_B, new_weight_I, new_weight_O])
         torchweights = torch.from_numpy(newWeights).float().to('cuda')
         rescaledweights = torchweights
 
@@ -145,7 +145,7 @@ def main():
         new_weight_O = (1 / math.sqrt(sum_O))
         new_weight_B = (1 / math.sqrt(sum_B))
         new_weight_I = (1 / math.sqrt(sum_I))
-        newWeights = np.array([new_weight_O, new_weight_B, new_weight_I])
+        newWeights = np.array([new_weight_B, new_weight_I, new_weight_O])
         torchweights = torch.from_numpy(newWeights).float().to('cuda')
         rescaledweights = torchweights
 
@@ -153,7 +153,7 @@ def main():
         new_weight_O = (1 - data_args.beta_factor / (1 - np.power(data_args.beta_factor, sum_O)))
         new_weight_B = (1 - data_args.beta_factor / (1 - np.power(data_args.beta_factor, sum_B)))
         new_weight_I = (1 - data_args.beta_factor / (1 - np.power(data_args.beta_factor, sum_I)))
-        newWeights = np.array([new_weight_O, new_weight_B, new_weight_I])
+        newWeights = np.array([new_weight_B, new_weight_I, new_weight_O])
         torchweights = torch.from_numpy(newWeights).float().to('cuda')
         rescaledweights = torchweights
 
@@ -161,7 +161,7 @@ def main():
         new_weight_O = (1 - sum_O / TotalTags)
         new_weight_B = (1 - sum_B / TotalTags)
         new_weight_I = (1 - sum_I / TotalTags)
-        newWeights = np.array([new_weight_O, new_weight_B, new_weight_I])
+        newWeights = np.array([new_weight_B, new_weight_I, new_weight_O])
         torchweights = torch.from_numpy(newWeights).float().to('cuda')
         rescaledweights = torchweights
         rescaledweights = torch.softmax(torchweights, dim=0)
