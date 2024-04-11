@@ -15,7 +15,7 @@ fi
 DOWNLOAD_PATH_TAR="$DOWNLOAD_PATH.zip"
 
 # Download datasets
-wget 'https://drive.usercontent.google.com/download?id=1nHH3UYpQImQhBTei5HiTcAAFBvsfaBw0&export=download&authuser=1&confirm=t'-O "$DOWNLOAD_PATH_TAR" && rm -rf /tmp/cookies.txt
+wget 'https://drive.usercontent.google.com/download?id=1nHH3UYpQImQhBTei5HiTcAAFBvsfaBw0&export=download&authuser=1&confirm=t' -O "$DOWNLOAD_PATH_TAR" && rm -rf /tmp/cookies.txt
 jar xvf "$DOWNLOAD_PATH_TAR"
 rm "$DOWNLOAD_PATH_TAR"
 echo "Bio dataset download done!"
