@@ -16,7 +16,7 @@ Note: To install the appropriate torch, follow the [download instructions](https
 **NER Datasets**
 | Dataset 	| Source 	|
 |---	|---	|
-| <ul><li>NCBI-disease</li> <li>BC5CDR-disease</li>  <li>BC5CDR-chem</li>  <li>BC4CHEMD</li> <li>BC2GM</li> <li>Linnaeus</li></ul> 	| NER datasets are directly retrieved from [BioBERT](https://github.com/dmis-lab/biobert) via this [link](https://drive.google.com/file/d/1cGqvAm9IZ_86C4Mj7Zf-w9CFilYVDl8j/view) 	|
+| <ul><li>NCBI-disease</li> <li>BC5CDR-disease</li>  <li>BC5CDR-chem</li>  <li>BC4CHEMD</li> <li>BC2GM</li> <li>Linnaeus</li></ul> 	| NER datasets are directly retrieved from [BioBERT](https://github.com/dmis-lab/biobert) via this [link](http://nlp.dmis.korea.edu/projects/biobert-2020-checkpoints/datasets.tar.gz) 	|
 | <ul><li>BioRED-Dis</li>  <li>BioRED-Chem</li></ul> 	| We have extended the aforementioned NER datasets to include [BioRED](https://ftp.ncbi.nlm.nih.gov/pub/lu/BioRED/). To convert from  `BioC XML / JSON` to `conll`, we used [bconv](https://github.com/lfurrer/bconv) and filtered the chemical and disease entities. 	|
 
 **Data Download** \
