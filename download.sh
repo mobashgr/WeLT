@@ -9,7 +9,7 @@ set -e
 # Configure download location
 DOWNLOAD_PATH="$BIOBERT_DATA"
 if [ "$BIOBERT_DATA" == "" ]; then
-    echo "BIOBERT_DATA not set; downloading to default path ('data')."
+    echo "BIOBERT_DATA not set; downloading to the default path ('data')."
     DOWNLOAD_PATH="./data"
 fi
 DOWNLOAD_PATH_TAR="$DOWNLOAD_PATH.zip"
